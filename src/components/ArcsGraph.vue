@@ -7,7 +7,7 @@
           :startAngle="arc.startAngle"
           :endAngle="arc.endAngle"
           :padAngle="arc.padAngle"
-          :fill="colors[index]"
+          :fill="colors[index%7]"
           :label="arc['data'][labelAccessor]"
           :arc-index="index"
         >
@@ -18,7 +18,9 @@
 
 <script>
 import pie from "d3-shape/src/pie";
+
 import Arc from "@/components/Arc";
+
 import GraphMixin from "@/mixins/graph";
 import ArcMixin from "@/mixins/arc";
 
@@ -53,7 +55,7 @@ export default {
           return datumObject;
         });
       }
-      debugger;
+
       return domain;
     },
     pie() {
@@ -61,8 +63,10 @@ export default {
 
       return pie()
         .sort(null)
+        .startAngle(-90 * Math.PI/180)
+        .endAngle(-90 * Math.PI/180 + 2*Math.PI)
         .padAngle(padAngle)
-        .value((d, i) => d[valueAccessor])(normalizedDomain);
+        .value((d, i) => d[valueAccessor])(normalizedDomain)
     }
   }
 }

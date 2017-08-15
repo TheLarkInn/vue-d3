@@ -2,7 +2,7 @@
   <div @click="onClick">
     <arcs-graph :height="400" :width="400"
       :outer-radius="150" :inner-radius="80"
-      :pad-angle=".3" :pad-radius="10"
+      :pad-angle=".4" :pad-radius="10"
       :domain="webpackModules"
       :colors="['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']"
       value-accessor="size" label-accessor="size"
@@ -60,7 +60,7 @@ export default {
 
 <style>
   #chart {
-    background: #41B883; /* nuxt (vue) logo color */
+    background: blue; /* nuxt (vue) logo color */
     width: 400px;
     height: 400px;
   }

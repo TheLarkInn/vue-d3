@@ -2,7 +2,7 @@
   <g class="arc-group">
     <path v-bind="bindMixinProps" :d="d()"></path>
 
-    <text v-if="showLabel" class="arc-text" :dy="aboveHalfwayPoint ? 22 : -11"
+    <text v-if="showLabel" class="arc-text" :dy="belowHalfwayPoint ? 22 : -11"
       fill="black"
       stroke="black">
       <textPath
@@ -49,7 +49,7 @@ export default {
       const {paintProps, arcProps} = this;
       return {...paintProps, ...arcProps};
     },
-    aboveHalfwayPoint() {
+    belowHalfwayPoint() {
       const {endAngle, startAngle} = this;
 
       return endAngle > 90 * Math.PI/180;
@@ -72,12 +72,12 @@ export default {
         .padAngle(padAngle);
     },
     dLabel() {
-      const {d, endAngle, aboveHalfwayPoint} = this;
+      const {d, endAngle, belowHalfwayPoint} = this;
       const firstArcRegex = /(^.+?)L/;
 
       let newArc = firstArcRegex.exec(d())[1].replace(/,/g , " ");
 
-      if (aboveHalfwayPoint) {
+      if (belowHalfwayPoint) {
         const startLocationRegex = /M(.*?)A/;
         const middleLocationRegex = /A(.*?)0 0 1/;
         const endLocationRegex = /0 0 1 (.*?)$/;

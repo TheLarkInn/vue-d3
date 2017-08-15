@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="onClick">
     <arcs-graph :height="400" :width="400"
       :outer-radius="150" :inner-radius="80"
       :pad-angle=".3" :pad-radius="10"
@@ -13,7 +13,8 @@
 <script>
 import data from "@/assets/stats.json";
 
-const ArcsGraph = () => import("@/components/ArcsGraph");
+// const ArcsGraph = () => import("@/components/ArcsGraph");
+import ArcsGraph from "@/components/ArcsGraph";
 
 export default {
   data() {

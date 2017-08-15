@@ -1,17 +1,17 @@
 <template>
   <div id="ColorBarGraph">
     <svg :height="height" :width="width">
-        <arc :transform="`translate(${height/2}, ${width/2})`"
-          v-for="(arc, index) in pie" :key="index"
-          v-bind="arcProps"
-          :startAngle="arc.startAngle"
-          :endAngle="arc.endAngle"
-          :padAngle="arc.padAngle"
-          :fill="colors[index%7]"
-          :label="arc['data'][labelAccessor]"
-          :arc-index="index"
-        >
-        </arc>
+      <arc :transform="`translate(${height/2}, ${width/2})`"
+        v-for="(arc, index) in pie" :key="index"
+        v-bind="arcProps"
+        :startAngle="arc.startAngle"
+        :endAngle="arc.endAngle"
+        :padAngle="arc.padAngle"
+        :fill="colors[index%7]"
+        :label="arc['data'][labelAccessor]"
+        :arc-index="index"
+      >
+      </arc>
     </svg>
   </div>
 </template>
@@ -29,7 +29,8 @@ export default {
   mixins: [GraphMixin, ArcMixin],
   props: {
     colors: {
-      type: Array
+      type: Array,
+      required: true
     },
     valueAccessor: {
       type: String,
